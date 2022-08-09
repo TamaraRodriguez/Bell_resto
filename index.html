@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <title>Bell Resto</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
+    <!-- Vue -->
+    <script src="scripts/vue.js"></script>
+    <script src="scripts/vue2-filters.js"></script>
+
+    <!-- Css -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/animate.css"/>
+  </head>
+
+  <body>
+    <div id="app">
+      <v-app id="inspire">
+        <v-navigation-drawer
+          v-model="drawer"
+          app>
+          <v-list>
+            <v-list-item links 
+              v-for="item in items"
+              :key="item.titulo"
+              :to="item.path">
+              <v-list-item-action>
+                <v-icon>mdi-{{ item.icono }}</v-icon>
+              </v-list-item-action>
+              <v-list-item-content>
+                <v-list-item-title>{{ item.titulo }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-navigation-drawer>
+        
+        <v-app-bar class="primary" app>
+          <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+          <v-toolbar-title>Bell Resto</v-toolbar-title>
+        </v-app-bar>
+        <v-main>
+          <v-container fluid>
+            <v-fade-transition mode="out-in">
+              <router-view></router-view>
+            </v-fade-transition>
+          </v-container>
+        </v-main> 
+
+        <v-footer primary padless>
+          <v-card class="flex" flat tile>
+            <v-card-title class="primary">
+              <strong class="white--text">Seguinos en las redes sociales!</strong>
+
+              <v-spacer></v-spacer>
+
+              <v-btn
+                v-for="icon in icons"
+                :key="icon"
+                class="mx-4"
+                dark
+                icon
+              >
+                <v-icon size="24px">
+                  {{ icon }}
+                </v-icon>
+              </v-btn>
+            </v-card-title>
+
+            <v-card-text class="py-2 black--text text-center">
+             Aplicaciones para Dispositivos Móviles | Copyright &copy; — <strong>Bell Resto</strong>
+            </v-card-text>
+          </v-card>
+        </v-footer>
+      </v-app>
+    </div>
+
+    <!-- Js -->
+    <script src="scripts/vue-router.js"></script>
+    <script src="scripts/componentes/inicio.js"></script>
+    <script src="scripts/componentes/menu.js"></script>
+    <script src="scripts/componentes/reserva.js"></script>
+    <script src="scripts/componentes/misreservas.js"></script>
+    <script src="scripts/componentes/contacto.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="app.js"></script> 
+
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.6/vue-router.js"></script>--> 
+    <!--<script src="scripts/vuetify-v2.0.0.min.js"></script>-->
+
+  </body>
+</html>
